@@ -9,6 +9,8 @@ const routes: Routes = [{
   loadChildren: './tasks/tasks.module#TasksModule'
 }, {
   path: '', loadChildren: './tasks/tasks.module#TasksModule'
+}, {
+  path: '', loadChildren: './users/users.module#UsersModule'
 }];
 
 @NgModule({
