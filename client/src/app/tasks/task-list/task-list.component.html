@@ -1,61 +1,32 @@
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<ul class="list-unstyled">
+  <li class="media">
+    <!--
+    <img class="mr-3" src="holder.js/64x64/auto/#777:#555/text:First slide" alt="Generic placeholder image">
+    <div class="mr-3" [routerLink]="[ '/tasks/task-detail', 1 ]">
+      <i class="fa fa-picture-o" aria-hidden="true"></i>
+    </div>
+-->
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">
+        <span>知乎是网络问答社区开业</span> <a [routerLink]="[ '/tasks/task-details', 1 ]" class="badge badge-primary">查看</a>
+      </h5>
+      <div class="row">
+        <div class="col-6">
+          <span class="badge badge-pill badge-info">朋友圈转发图片</span>
+          <span class="badge badge-pill badge-primary">奖品</span>
+          <span class="badge badge-pill badge-warning">4小时后结束</span>
+        </div>
+        <div class="col-6">
+          <div class="progress">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100">任务量:12/50</div>
+          </div>
+        </div>
+      </div>
+      <p class="form-text text-muted">
+        知乎是网络问答社区，连接各行各业的用户。用户分享着彼此的知识、经验和见解，为中文互联网源源不断地提供多种多样的信息。准确地讲，知乎更像一个论坛：用户围绕着某一感兴趣的话题进行相关的讨论，同时可以关注兴趣一致的人
+      </p>
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+    </div>
+  </li>
+</ul>
