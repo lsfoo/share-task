@@ -1,5 +1,5 @@
 <tabset [justified]="true" #staticTabs>
-  <tab heading="基本" id="tab1">
+  <tab heading="任务" id="tab1">
     <div class="form-group mt-2">
       <label for="">任务类型</label>
       <select class="form-control" name="" id="">
@@ -8,23 +8,38 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="">奖励类型</label>
+      <label for="">朋友圈存在时长（小时)</label>
       <select class="form-control" name="" id="">
-        <option>礼品</option>
-        <option>红包</option>
+        <option>1</option>
+        <option>3</option>
+        <option>5</option>
+        <option>8</option>
+        <option>12</option>
+        <option>24</option>
+        <option>48</option>
       </select>
     </div>
+    <div class="form-group">
+      <label for="">集赞数量</label>
+      <input type="number" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+      <small id="helpId" class="text-muted">Help text</small>
+    </div>
+
     <div class="form-group">
       <label for="">任务领取开始日期</label>
       <input type="text" class=" form-control ng-valid ng-touched ng-dirty" placeholder="" bsDatepicker>
       <small id="helpId" class="text-muted">Help text</small>
     </div>
+
+    <!--
+
     <div class="form-group">
       <label for="">任务领取开始时间</label>
       <timepicker></timepicker>
       <small id="helpId" class="text-muted"></small>
     </div>
 
+    -->
     <div class="form-group">
       <label for="">任务领取结束日期</label>
 
@@ -32,25 +47,61 @@
       <small id="helpId" class="text-muted">Help text</small>
     </div>
 
-    <div class="form-group">
-      <label for="">任务领取结束时间</label>
-      <timepicker></timepicker>
-      <small id="helpId" class="text-muted"></small>
-    </div>
-    <div class="text-center">
+    <div class="form-group text-right">
       <button type="button" class="btn btn-outline-primary" (click)="selectTab(1)">下一步</button>
     </div>
   </tab>
-  <tab heading="任务">
-    <div class="text-center">
-      <button type="button" class="btn btn-outline-primary" (click)="selectTab(0)">上一步</button>
-      <button type="button" class="btn btn-outline-primary" (click)="selectTab(2)">下一步</button>
+  <tab heading="内容">
+    <div class="form-group">
+      <label for="">转发文字</label>
+      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+      <small id="helpId" class="text-muted">Help text</small>
     </div>
+    <div class="form-group">
+      <label for="">上传需要转发的图片</label>
+      <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+      <small id="fileHelpId" class="form-text text-muted">目前仅支持一张</small>
+    </div>
+    <div class="form-group text-right">
+      <div class="btn-group" role="group" aria-label="">
+        <button type="button" class="btn btn-outline-primary" (click)="selectTab(0)">上一步</button>
+        <button type="button" class="btn btn-outline-primary" (click)="selectTab(2)">下一步</button>
+      </div>
+    </div>
+
   </tab>
   <tab heading="奖励">
-    <div class="text-center">
-      <button type="button" class="btn btn-outline-primary" (click)="selectTab(0)">上一步</button>
-      <button type="button" class="btn btn-outline-primary" (click)="selectTab(2)">完成</button>
+    <div class="form-group">
+      <label for="">奖励类型</label>
+      <select class="form-control" name="" id="">
+        <option>礼品</option>
+        <option>红包</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">奖品描述</label>
+      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+      <small id="helpId" class="text-muted">Help text</small>
+    </div>
+    <div class="form-group">
+      <label for="">奖品数量</label>
+      <select class="form-control" name="" id="">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">上传奖品图片</label>
+      <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+      <small id="fileHelpId" class="form-text text-muted">Help text</small>
+    </div>
+
+    <div class="form-group text-right">
+      <div class="btn-group" role="group" aria-label="">
+        <button type="button" class="btn btn-outline-primary" (click)="selectTab(1)">返回</button>
+        <button type="button" class="btn btn-outline-primary" (click)="selectTab(2)">发布</button>
+      </div>
     </div>
   </tab>
 </tabset>

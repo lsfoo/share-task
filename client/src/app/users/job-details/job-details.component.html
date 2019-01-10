@@ -1,0 +1,52 @@
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" href="/">首页</a>
+  <a class="breadcrumb-item" [routerLink]="[ '/users/job-list'  ]">工作列表</a>
+  <span class="breadcrumb-item active">工作详情</span>
+</nav>
+<div class="card bg-default">
+  <div class="card-header">朋友圈转发图片 <span class="badge badge-warning">10小时后结束 </span> <span class="badge badge-secondary">待开始</span>
+  </div>
+  <div class="card-body text-center">
+
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547118125792&di=907d520a2c425af4b499e382f74c4bd3&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F012cfa56e958a26ac7255885c0a7a8.jpg%401280w_1l_2o_100sh.jpg"
+      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+    <h5 class="mt-2">转发文字内容:</h5>
+    <p class="card-text">安装Anaconda和Tensorflow[<a href="#">长按复制</a>]</p>
+    <button type="button" class="btn btn-outline-primary">复制文本并下载图片</button>
+    <hr>
+    <small id="helpId" class="text-muted">分享朋友圈手机截屏，提交执行任务</small>
+    <div class="form-group">
+      <label for="">任务开始手机截屏</label>
+      <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+      <small id="fileHelpId" class="form-text text-muted">Help text</small>
+    </div>
+    <div class="form-group">
+      <label for="">任务结束手机截屏</label>
+      <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+      <small id="fileHelpId" class="form-text text-muted">结束图片时间不能少于任务要求时间</small>
+    </div>
+    <div class="btn-group" role="group" aria-label="">
+      <button type="button" class="btn btn-outline-secondary">暂存</button>
+      <button type="button" class="btn btn-outline-primary">提交</button>
+    </div>
+  </div>
+</div>
+<div class="alert alert-success" role="alert">
+  <strong>2018/1/8 13:60 接取了任务</strong>
+</div>
+
+<div class="alert alert-success" role="alert">
+  <strong>2018/1/8 13:60 暂存了任务</strong>
+</div>
+
+<div class="alert alert-success" role="alert">
+  <strong>2018/1/8 13:60 提交了任务</strong>
+</div>
+
+<div class="alert alert-success" role="alert">
+  <strong>2018/1/8 13:60 通过了任务发布的审批,获取领取任务资格</strong>
+</div>
+
+<div class="alert alert-success" role="alert">
+  <strong>2018/1/8 13:60 确认领取和奖励</strong>
+</div>

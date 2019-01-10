@@ -1,43 +1,32 @@
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" [routerLink]="[ '/' ]">首页</a>
+  <span class="breadcrumb-item active">工作列表</span>
+</nav>
 <div class="form-group">
   <label for="">筛选</label>
   <select class="custom-select" name="" id="">
+    <option value="">全部</option>
     <option value="">待提交</option>
     <option value="">已提交</option>
     <option value="">已完成</option>
   </select>
 </div>
+<div class="card mb-1">
+  <span class="float-right"></span> <a [routerLink]="[ '/users/job-details', 2 ]">
+    <div class="card-header">朋友圈转发图片 <span class="badge badge-warning">10小时后结束 </span> <span class="badge badge-secondary">待开始</span>
+    </div>
+  </a>
+</div>
+<div class="card mb-1">
+  <span class="float-right"></span> <a [routerLink]="[ '/users/job-details', 2 ]">
+    <div class="card-header">朋友圈转发图片 <span class="badge badge-warning">10小时后结束 </span> <span class="badge badge-secondary">待开始</span>
+    </div>
+  </a>
+</div>
 
-<ul class="list-unstyled">
-  <li class="media">
-    <a class="d-flex" href="#">
-      <img src="" alt="">
-    </a>
-    <div class="media-body">
-      <h5>Media heading</h5>
-      Media text
+<div class="card mb-1">
+  <span class="float-right"></span> <a [routerLink]="[ '/users/job-details', 2 ]">
+    <div class="card-header">朋友圈转发图片 <span class="badge badge-warning">10小时后结束 </span> <span class="badge badge-secondary">待开始</span>
     </div>
-    <div class="btn-group" role="group" aria-label="">
-      <button type="button" class="btn btn-secondary">查看</button>
-      <button type="button" class="btn btn-secondary">取消</button>
-      <button type="button" class="btn btn-secondary">提交</button>
-    </div>
-  </li>
-  <li class="media">
-    <a class="d-flex" href="#">
-      <img src="" alt="">
-    </a>
-    <div class="media-body">
-      <h5>Media heading</h5>
-      Media text
-    </div>
-  </li>
-  <li class="media">
-    <a class="d-flex" href="#">
-      <img src="" alt="">
-    </a>
-    <div class="media-body">
-      <h5>Media heading</h5>
-      Media text
-    </div>
-  </li>
-</ul>
+  </a>
+</div>

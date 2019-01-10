@@ -1,41 +1,48 @@
 <div class="jumbotron p-3 mb-3">
   <div class="input-group">
-    <input type="text" class="form-control" name="name" id="name" placeholder="搜索" aria-label="">
+    <input type="text" class="form-control" name="name" id="name" placeholder="搜索" aria-label="" />
 
     <span class="input-group-btn">
-      <button class="btn btn-outline-secondary mr-2" type="button" aria-label=""><i class="fa fa-search" aria-hidden="true"></i></button>
+      <button class="btn btn-outline-secondary mr-2" type="button" aria-label="">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
     </span>
 
-    <button type="button" class="btn btn-outline-primary" [routerLink]="[ '/tasks/task-add']">发布任务</button>
+    <button type="button" class="btn btn-outline-primary" [routerLink]="['/tasks/task-add']">
+      发布任务
+    </button>
   </div>
 </div>
 <ul class="list-unstyled">
   <li class="media">
     <!--
-    <img class="mr-3" src="holder.js/64x64/auto/#777:#555/text:First slide" alt="Generic placeholder image">
-    <div class="mr-3" [routerLink]="[ '/tasks/task-detail', 1 ]">
+    <div class="mr-3" [routerLink]="['/tasks/task-detail', 1]">
       <i class="fa fa-picture-o" aria-hidden="true"></i>
     </div>
 -->
     <div class="media-body">
       <h5 class="mt-0 mb-2">
-        <a [routerLink]="[ '/tasks/task-details', 1 ]">知乎是网络问答社区开业</a>
+        <a [routerLink]="['/tasks/task-details', 1]">知乎是网络问答社区开业</a>
       </h5>
       <div class="row">
         <div class="col-6">
-          <span class="text-secondary mr-2">朋友圈转发图片</span>
-          <span class="text-info">剩余约4小时</span>
-
-          <span class="text-success ml-2">🎁</span>
+          <span class="text-secondary mr-1">朋友圈转发图片</span>
+          <span class="text-success">🎁</span>
         </div>
-        <div class="col-6 text-right">
-          <span class="text-secondary">任务量:12/50</span>
+        <div class="col-lg-6 col-sm-12 text-right">
+          <span class="text-secondary mr-2">
+            完成量/任务量 <span class="badge badge-info">20/100</span>
+          </span>
+
+          <span class="text-secondary mr-2">
+            剩余时间 <span class="badge badge-warning">19小时</span>
+          </span>
         </div>
       </div>
-      <p class="form-text text-muted">
-        知乎是网络问答社区，连接各行各业的用户。用户分享着彼此的知识、经验和见解，为中文互联网源源不断地提供多种多样的信息。准确地讲，知乎更像一个论坛：用户围绕着某一感兴趣的话题进行相关的讨论，同时可以关注兴趣一致的人
-      </p>
-
+      <span class="text-muted">任任务描述任务描述任务描述任务描述任务描述务描述
+        <a [routerLink]="['/tasks/task-details', 1]">更多</a>
+      </span>
+      <hr />
     </div>
   </li>
   <li class="media">
@@ -47,7 +54,7 @@
 -->
     <div class="media-body">
       <h5 class="mt-0 mb-1">
-        <a [routerLink]="[ '/tasks/task-details', 1 ]">新出火锅买一锅送两锅</a>
+        <a [routerLink]="['/tasks/task-details', 1]">新出火锅买一锅送两锅</a>
       </h5>
       <div class="row">
         <div class="col-6">
@@ -67,5 +74,8 @@
     </div>
   </li>
 </ul>
-<div class="text-center"><button type="button" class="btn btn-outline-primary"> <i class="fa fa-eye" aria-hidden="true"></i>
-    查看更多</button></div>
+<div class="text-center">
+  <button type="button" class="btn btn-outline-primary">
+    更多
+  </button>
+</div>
