@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/scss/bootstrap";
 // 定义图标路径
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import "../node_modules/font-awesome/scss/font-awesome.scss";
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss"
