@@ -20,9 +20,26 @@
       <div class="col-lg-9 text-right">
         <span class="text-secondary mr-2">创建时间：2018-12-01 12:30</span>
         <span class="text-danger mr-2">已结束 </span>
-        <span class="text-primary">待领取奖品</span>
+        <span class="text-primary">已通过</span>
       </div>
     </div>
+  </div>
+</div>
+<div class="card mb-1">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-lg-3">
+        <a [routerLink]="[ '/users/job-details', 2 ]">朋友圈转发图片</a>
+      </div>
+      <div class="col-lg-9 text-right">
+        <span class="text-secondary mr-2">创建时间：2018-12-01 12:30</span>
+        <span class="text-danger mr-2">已结束 </span>
+        <span class="text-primary">已拒绝</span>
+      </div>
+    </div>
+    <small class="text-muted">
+      时间不符合
+    </small>
   </div>
 </div>
 <div class="card mb-1">
@@ -49,28 +66,8 @@
       <div class="col-lg-9 text-right">
         <span class="text-secondary mr-2">创建时间：2018-12-01 12:30</span>
         <span class="text-danger mr-2">10小时后结束 </span>
-        <span class="text-primary">待开始</span>
+        <span class="text-primary">待提交</span>
       </div>
     </div>
   </div>
-</div>
-
-<div class="card mb-1">
-  <span class="float-right"></span> <a [routerLink]="[ '/users/job-details', 2 ]">
-    <div class="card-header">朋友圈转发图片 <span class="badge badge-warning">10小时后结束 </span> <span class="badge badge-secondary">待开始</span>
-    </div>
-  </a>
-</div>
-<div class="card mb-1">
-  <span class="float-right"></span> <a [routerLink]="[ '/users/job-details', 2 ]">
-    <div class="card-header">朋友圈转发图片 <span class="badge badge-warning">10小时后结束 </span> <span class="badge badge-secondary">待开始</span>
-    </div>
-  </a>
-</div>
-
-<div class="card mb-1">
-  <span class="float-right"></span> <a [routerLink]="[ '/users/job-details', 2 ]">
-    <div class="card-header">朋友圈转发图片 <span class="badge badge-warning">10小时后结束 </span> <span class="badge badge-secondary">待开始</span>
-    </div>
-  </a>
 </div>

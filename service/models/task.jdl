@@ -1,51 +1,42 @@
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
 application {
   config {
-    //applicationType monolith
-    //authenticationType jwt
+    baseName myGateway
+
+    packageName com.lsfoo.dev.myGateway
+    applicationType gateway
+    serverPort 8080
+  }
+}
+
+application {
+  config {
     baseName Task 
-    //buildTool maven
-    //cacheProvider hazelcast
-    //clientFramework angularX
-    //clientPackageManager npm 
-    //databaseType sql
-    //devDatabaseType h2Disk
-    //enableHibernateCache true
-    //enableTranslation false 
     packageName com.lsfoo.dev.task
-    //prodDatabaseType mysql
+    applicationType microservice
     searchEngine elasticsearch
-    //serviceDiscoveryType no
-    //useSass false 
     enableSwaggerCodegen true
     languages [en, zh-cn]
-    //messageBroker false
     nativeLanguage zh-cn
-    //serverPort 8080
-    //skipClient false
-    //skipServer false
-    //skipUserManagement 	true
-    //testFrameworks[ protractor]
-    //websocket false
   }
-  entities * 
+  entities  Task, Category
 }
-//application {
-//  config {
-//    serviceDiscoveryType no
-//    applicationType microservice
-//    authenticationType jwt
-//    baseName task 
-//    buildTool maven
-//    cacheProvider hazelcast
-//    enableHibernateCache false
-//    packageName com.lsfoo.dev.task
-//    prodDatabaseType mysql
-//    searchEngine elasticsearch
-//    skipUserManagement true
-//    useSass true
-//  }
-//  entities * 
-//}
+
+application {
+  config {
+    baseName Job 
+    packageName com.lsfoo.dev.job
+    applicationType microservice
+    searchEngine elasticsearch
+    enableSwaggerCodegen true
+    languages [en, zh-cn]
+    nativeLanguage zh-cn
+  }
+  entities  Task, Category, Job
+}
 
 
 
@@ -101,24 +92,9 @@ entity Person{
   balance BigDecimal
   phone String
   email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
-
 }
- /**
-  * The Entity entity.
-  * @author A true hipster
-  */
- entity BalanceLog {
-   /** fieldName */
-   fieldName String
-   type BalanceType
-
- }
- enum BalanceType{
-   IN,OUT
- }
-
 relationship OneToOne {
-    Person{user(login) required} to User
+  Person{user(login) required} to User
 }
 enum CategoryStatus {
   AVAILABLE, DISABLED
@@ -144,4 +120,4 @@ search * with elasticsearch
 //service * with serviceImpl
 //paginate * with pager
 paginate * with infinite-scroll
-search * with elasticsearch 
+search * with elasticsearch
