@@ -1,0 +1,54 @@
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
+//application {
+//  config {
+//    baseName uaa,
+//    packageName com.lsfoo.demo.uaa,
+//    applicationType uaa,
+//    serviceDiscoveryType eureka,
+//    searchEngine elasticsearch,
+//    enableTranslation false,
+// }
+//}
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
+application {
+  config {
+    baseName gateway,
+    packageName com.lsfoo.demo.gateway,
+    applicationType gateway,
+    authenticationType jwt,
+    serviceDiscoveryType eureka,
+    enableTranslation false,
+ }
+ entities *
+}
+
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
+application {
+  config {
+    baseName task,
+    packageName com.lsfoo.demo.task,
+    applicationType microservice,
+    authenticationType jwt,
+    serviceDiscoveryType eureka,
+    enableTranslation false,
+    serverPort 8081
+ }
+ entities Task
+}
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity Task {
+  /** fieldName */
+  fieldName String
+}
