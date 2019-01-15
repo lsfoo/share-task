@@ -5,72 +5,48 @@
 application {
   config {
     baseName gateway,
-    packageName com.okta.developer.gateway,
+    packageName com.lsfoo.app.gateway,
     applicationType gateway,
-    authenticationType oauth2,
-    prodDatabaseType postgresql,
+    authenticationType jwt,
     searchEngine elasticsearch,
     serviceDiscoveryType eureka,
-    testFrameworks [protractor]
+    enableTranslation false,
   }
-  entities Blog, Post, Tag, Product
+  //entities * except Task, Job
 }
 
 application {
   config {
-    baseName blog,
-    packageName com.okta.developer.blog,
+    baseName task,
+    packageName com.lsfoo.app.task,
     applicationType microservice,
-    authenticationType oauth2,
-    prodDatabaseType postgresql,
+    authenticationType jwt,
     searchEngine elasticsearch,
     serverPort 8081,
     serviceDiscoveryType eureka
   }
-  entities Blog, Post, Tag
+  entities Task, Job
 }
-
-application {
-  config {
-    baseName store,
-    packageName com.okta.developer.store,
-    applicationType microservice,
-    authenticationType oauth2,
-    databaseType mongodb,
-    devDatabaseType mongodb,
-    prodDatabaseType mongodb,
-    enableHibernateCache false,
-    searchEngine elasticsearch,
-    serverPort 8082,
-    serviceDiscoveryType eureka
-  }
-  entities Product
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity Task {
+  /** fieldName */
+  title String
 }
-
-entity Blog {
-  name String required minlength(3),
-  handle String required minlength(2)
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity Job {
+  /** fieldName */
+  fieldName String
 }
-entity Post {
-  title String required,
-  content TextBlob required,
-  date Instant required
-}
-entity Tag {
-  name String required minlength(2)
-}
-entity Product {
-  title String required,
-  price BigDecimal required min(0),
-  image ImageBlob
-}
+/**
+ * Many to one relationship.
+ */
 relationship ManyToOne {
-  Blog{user(login)} to User , Post{blog(name)} to Blog
+  Job{task(title)} to Task
+  Task{user(login)} to User
 }
-relationship ManyToMany {
-  Post{tag(name)} to Tag{post}
-}
-paginate Post, Tag with infinite-scroll
-paginate Product with pagination
-microservice Product with store
-microservice Blog, Post, Tag with blog
