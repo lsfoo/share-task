@@ -1,0 +1,90 @@
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
+application {
+  config {
+    baseName uaa,
+    applicationType uaa,
+    packageName com.lsfoo.com.app.uaa,
+    enableTranslation false
+    authenticationType uaa,
+    serviceDiscoveryType eureka
+  }
+}
+application {
+  config {
+    baseName gateway,
+    applicationType gateway,
+    packageName com.lsfoo.com.app.gateway,
+    enableTranslation false
+    serviceDiscoveryType eureka,
+    uaaBaseName "uaa"
+    authenticationType uaa,
+  }
+  entities *
+}
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
+application {
+  config {
+    baseName task,
+    applicationType microservice
+    packageName com.lsfoo.app.task,
+    serviceDiscoveryType eureka
+    uaaBaseName "uaa",
+    authenticationType uaa,
+    searchEngine elasticsearch,
+    serverPort 8081
+  }
+  entities Task, Job
+}
+application {
+  config {
+    baseName live,
+    applicationType microservice
+    packageName com.lsfoo.app.live,
+    serviceDiscoveryType eureka
+    uaaBaseName "uaa"
+    authenticationType uaa,
+    searchEngine elasticsearch,
+    serverPort 8082
+  }
+  entities LiveRoom
+}
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity Task {
+  /** fieldName */
+  title String
+}
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity Job {
+  /** fieldName */
+  fieldName String
+}
+/**
+ * Many to one relationship.
+ */
+relationship ManyToOne {
+  Job{task(title)} to Task
+}
+/**
+ * 直播间 .
+ * @author A true hipster
+ */
+entity LiveRoom  {
+  kkkkkkkkkkk /** fieldName */
+  fieldName String
+}
+paginate * with pager
+service * with serviceClass
+service * with serviceImpl
+dto * with mapstruct
