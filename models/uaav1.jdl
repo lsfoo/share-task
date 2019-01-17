@@ -11,6 +11,7 @@ application {
     authenticationType uaa,
     serviceDiscoveryType eureka
   }
+  entities UserInfo
 }
 application {
   config {
@@ -21,6 +22,7 @@ application {
     serviceDiscoveryType eureka,
     uaaBaseName "uaa"
     authenticationType uaa,
+    skipUserManagement true
   }
   entities *
 }
@@ -30,9 +32,9 @@ application {
  */
 application {
   config {
-    baseName task,
+    baseName momentsTask,
     applicationType microservice
-    packageName com.lsfoo.app.task,
+    packageName com.lsfoo.app.momentstask,
     serviceDiscoveryType eureka
     uaaBaseName "uaa",
     authenticationType uaa,
@@ -56,7 +58,15 @@ application {
   }
   entities LiveRoom
 }
-
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity UserInfo {
+  nickName String
+  phoneNumber String
+  address String
+}
 /**
  * 直播间 .
  * @author A true hipster
@@ -111,6 +121,9 @@ entity MomentsTask {
 
   /** 审核状态 */
   approvalStatus ApprovalStatus
+
+  /** 审核状态 */
+  userId Integer
 }
 enum RewardType {
   GIFT, COMMISSION
@@ -123,8 +136,6 @@ enum ApprovalStatus {
  * @author A true hipster
  */
 entity MomentsJob {
-  /** fieldName */
-  fieldName String
   /** 审核状态 */
   approvalStatus ApprovalStatus
 
@@ -133,14 +144,15 @@ entity MomentsJob {
 
   /** 任务完成截图 */
   endScreenCapture String
+
+  /** 审核状态 */
+  userId Integer
 }
 /**
  * Many to one relationship.
  */
 relationship ManyToOne {
   MomentsJob{task(title)} to MomentsTask
-  MomentsTask{user(login)} to User
-  MomentsJob{user(login)} to User
 }
 paginate * with pager
 service * with serviceClass
