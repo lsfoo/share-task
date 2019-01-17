@@ -1,6 +1,5 @@
-/*
- * This is a microservice blog sample with Gateway and two microservice applications
- * This uses JHipster registry for service discovery and OIDC authentication
+/**
+ * 网关
  */
 application {
   config {
@@ -14,6 +13,9 @@ application {
   //entities * except Task, Job
 }
 
+/**
+ * 朋友圈任务服务
+ */
 application {
   config {
     baseName momentstask,
@@ -27,9 +29,27 @@ application {
   }
   entities MomentsTask, MomentsJob
 }
+
 /**
- * The Entity entity.
- * @author A true hipster
+ * 用户信息 
+ */
+application {
+  config {
+    baseName userinfo,
+    packageName com.lsfoo.app.userinfo,
+    applicationType microservice,
+    authenticationType jwt,
+    searchEngine elasticsearch,
+    serverPort 8083,
+    serviceDiscoveryType eureka
+    skipUserManagement true
+  }
+  entities * except MomentsJob,MomentsTask 
+}
+
+/**
+ * 朋友圈任务.
+ * @author lsfoo 
  */
 entity MomentsTask   {
   /** 标题 */
@@ -71,23 +91,29 @@ entity MomentsTask   {
   /** 佣金 */
   commission Float
 
-
   /** 审核状态 */
   approvalStatus ApprovalStatus
+
+  /** 用户ID */
+  userId Integer
+
+  createdDate Instant
+
 }
+/** 奖励类型 */
 enum RewardType {
   GIFT, COMMISSION
 }
+
+/** 审核状态 */
 enum ApprovalStatus {
   APPROVED, REJECT
 }
+
 /**
- * The Entity entity.
- * @author A true hipster
+ * 工作.
  */
 entity MomentsJob {
-  /** fieldName */
-  fieldName String
   /** 审核状态 */
   approvalStatus ApprovalStatus
 
@@ -96,10 +122,38 @@ entity MomentsJob {
 
   /** 任务完成截图 */
   endScreenCapture String
+
+  /** 用户ID */
+  userId Integer
+  
+  createdDate Instant
+
 }
+
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity UserInfo {
+  /** 昵称 */
+  nickName String
+
+  /** 头像 */
+  avater String
+
+  /** 手机号 */
+  phoneNumber String
+}
+
 /**
  * Many to one relationship.
  */
 relationship ManyToOne {
   MomentsJob{task(title)} to MomentsTask
+}
+/**
+ * One to one relationship.
+ */
+relationship OneToOne {
+  UserInfo{user(login)} to User
 }
