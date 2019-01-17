@@ -1,0 +1,29 @@
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
+application {
+    config {
+        baseName task,
+        packageName com.lsfoo.app.task,
+        authenticationType jwt,
+        searchEngine elasticsearch,
+        enableTranslation false
+    }
+}
+/**
+ * 任务.
+ * @author lsfoo
+ */
+entity Task {
+    /** fieldName */
+    fieldName String
+}
+/**
+ * 工作.
+ * @author lsfoo
+ */
+entity Job {
+    /** fieldName */
+    fieldName String
+}
