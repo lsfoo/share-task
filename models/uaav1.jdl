@@ -38,8 +38,9 @@ application {
     authenticationType uaa,
     searchEngine elasticsearch,
     serverPort 8081
+    skipUserManagement true
   }
-  entities Task, Job
+  entities MomentsTask, MomentsJob
 }
 application {
   config {
@@ -51,38 +52,95 @@ application {
     authenticationType uaa,
     searchEngine elasticsearch,
     serverPort 8082
+    skipUserManagement true
   }
   entities LiveRoom
 }
-/**
- * The Entity entity.
- * @author A true hipster
- */
-entity Task {
-  /** fieldName */
-  title String
-}
-/**
- * The Entity entity.
- * @author A true hipster
- */
-entity Job {
-  /** fieldName */
-  fieldName String
-}
-/**
- * Many to one relationship.
- */
-relationship ManyToOne {
-  Job{task(title)} to Task
-}
+
 /**
  * 直播间 .
  * @author A true hipster
  */
 entity LiveRoom  {
-  kkkkkkkkkkk /** fieldName */
+  /** fieldName */ fieldName String
+}
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity MomentsTask {
+  /** 标题 */
+  title String
+
+  /** 朋友圈存在的时长 */
+  duration Integer
+
+  /** 集赞数量 */
+  laudQuantity Integer
+
+  /** 工作数量 */
+  jobQuantity Integer
+
+  /** 任务开始时间 */
+  startDate ZonedDateTime
+
+  /** 任务结束时间 */
+  endDate ZonedDateTime
+
+  /** 转发文字 */
+  forwardText String
+
+  /** 转发图片 */
+  forwardImgs String
+
+  /** 奖励类型 */
+  rewardType RewardType
+
+  /** 奖品描述 */
+  giftDescription String
+
+  /** 奖品图片 */
+  giftImgs String
+
+  /** 领取地址 */
+  pickupAddress String
+
+  /** 佣金 */
+  commission Float
+
+
+  /** 审核状态 */
+  approvalStatus ApprovalStatus
+}
+enum RewardType {
+  GIFT, COMMISSION
+}
+enum ApprovalStatus {
+  APPROVED, REJECT
+}
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity MomentsJob {
+  /** fieldName */
   fieldName String
+  /** 审核状态 */
+  approvalStatus ApprovalStatus
+
+  /** 任务开始截图 */
+  startScreenCapture String
+
+  /** 任务完成截图 */
+  endScreenCapture String
+}
+/**
+ * Many to one relationship.
+ */
+relationship ManyToOne {
+  MomentsJob{task(title)} to MomentsTask
+  MomentsTask{user(login)} to User
+  MomentsJob{user(login)} to User
 }
 paginate * with pager
 service * with serviceClass
