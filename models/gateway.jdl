@@ -1,0 +1,14 @@
+/**
+ * 网关
+ */
+application {
+  config {
+    baseName gateway,
+    packageName com.lsfoo.app.gateway,
+    applicationType gateway,
+    authenticationType jwt,
+    serviceDiscoveryType eureka,
+    enableTranslation false,
+  }
+  //entities * except Task, Job
+}

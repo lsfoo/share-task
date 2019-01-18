@@ -1,123 +1,98 @@
 /**
- * The application configuration.
- * @author A true hipster
+ * 朋友圈任务服务
  */
 application {
   config {
-    baseName myGateway
-
-    packageName com.lsfoo.dev.myGateway
-    applicationType gateway
-    serverPort 8080
+    applicationType microservice,
+    authenticationType jwt,
+    baseName momentstask,
+    cacheProvider ehcache,
+    enableTranslation false,
+    packageName com.lsfoo.app.momentstask,
+    searchEngine elasticsearch,
+    serverPort 8081,
+    serviceDiscoveryType eureka,
+    skipClient true,
+    skipUserManagement true,
   }
+  entities MomentsTask, MomentsJob
 }
-
-application {
-  config {
-    baseName Task 
-    packageName com.lsfoo.dev.task
-    applicationType microservice
-    searchEngine elasticsearch
-    enableSwaggerCodegen true
-    languages [en, zh-cn]
-    nativeLanguage zh-cn
-  }
-  entities  Task, Category
-}
-
-application {
-  config {
-    baseName Job 
-    packageName com.lsfoo.dev.job
-    applicationType microservice
-    searchEngine elasticsearch
-    enableSwaggerCodegen true
-    languages [en, zh-cn]
-    nativeLanguage zh-cn
-  }
-  entities  Task, Category, Job
-}
-
 
 
 /**
- * 任务
- * @author lsfoo
+ * 朋友圈任务.
+ * @author lsfoo 
  */
-entity Task {
-  /** taskTitle */
-  title String required
-  description String
-  startDate ZonedDateTime required
-  endDate ZonedDateTime required
-  /** 可接取数量 */
-  quantity Integer required
-  status TaskStatus
-}
-enum TaskStatus {
-  WATTING, PROCESSING, DONE, CLOSED
-}
-/**
- * 任务工作 
- * @author lsfoo
- */
-entity Job {
-  /** jobTitle */
+entity MomentsTask   {
+  /** 标题 */
   title String
+
+  /** 朋友圈存在的时长 */
+  duration Integer
+
+  /** 集赞数量 */
+  laudQuantity Integer
+
+  /** 工作数量 */
+  jobQuantity Integer
+
+  /** 任务开始时间 */
+  startDate ZonedDateTime
+
+  /** 任务结束时间 */
+  endDate ZonedDateTime
+
+  /** 转发文字 */
+  forwardText String
+
+  /** 转发图片 */
+  forwardImgs String
+
+  /** 奖励类型 */
+  rewardType RewardType
+
+  /** 奖品描述 */
+  giftDescription String
+
+  /** 奖品图片 */
+  giftImgs String
+
+  /** 领取地址 */
+  pickupAddress String
+
+  /** 佣金 */
+  commission Float
+
+  /** 审核状态 */
+  approvalStatus ApprovalStatus
+}
+/** 奖励类型 */
+enum RewardType {
+  GIFT, COMMISSION
+}
+/** 审核状态 */
+enum ApprovalStatus {
+  APPROVED, REJECT
 }
 /**
- * 任务分类
- * @author lsfoo
+ * 工作.
  */
-entity Category{
-  /** 描述 */
-  description String
-  /** 排序 */
-  sortOrder Integer
-  status CategoryStatus
-}
-/**
- * 任务标签
- * @author lsfoo
- */
-entity Tag{
-  name String required
-}
-/**
- * 用户信息 
- * @author lsfoo
- */
-entity Person{
-  nickName String 
-  balance BigDecimal
-  phone String
-  email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
-}
-relationship OneToOne {
-  Person{user(login) required} to User
-}
-enum CategoryStatus {
-  AVAILABLE, DISABLED
+entity MomentsJob {
+  /** 审核状态 */
+  approvalStatus ApprovalStatus
+
+  /** 任务开始截图 */
+  startScreenCapture String
+
+  /** 任务完成截图 */
+  endScreenCapture String
 }
 /**
  * Many to one relationship.
  */
 relationship ManyToOne {
-  Job{task(title)} to Task{job}
-  Job{Person(nickName)} to Person{job}
-  Task{category(description)} to Category{task}
-  Task{Person(nickName)} to Person{task}
+  MomentsJob{task(title)} to MomentsTask
 }
-relationship ManyToMany{
-  Tag{task(title)} to Task{tag(name)}
-}
-/**
- * One to one relationship.
- */
-search * with elasticsearch
-//dto * with mapstruct
-//service * with serviceClass
-//service * with serviceImpl
-//paginate * with pager
+dto * with mapstruct
+service * with serviceClass
 paginate * with infinite-scroll
-search * with elasticsearch

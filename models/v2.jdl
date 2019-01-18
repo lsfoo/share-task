@@ -24,14 +24,15 @@ application {
     authenticationType jwt,
     searchEngine elasticsearch,
     serverPort 8081,
-    serviceDiscoveryType eureka
-    skipUserManagement true
+    serviceDiscoveryType eureka,
+    skipUserManagement true,
+    skipClient true,
   }
   entities MomentsTask, MomentsJob
 }
 
 /**
- * 用户信息 
+ * 用户 
  */
 application {
   config {
@@ -41,10 +42,11 @@ application {
     authenticationType jwt,
     searchEngine elasticsearch,
     serverPort 8083,
-    serviceDiscoveryType eureka
-    skipUserManagement true
+    serviceDiscoveryType eureka,
+    skipUserManagement true,
+    skipClient true,
   }
-  entities * except MomentsJob,MomentsTask 
+  entities * except MomentsJob, MomentsTask 
 }
 
 /**
@@ -96,20 +98,15 @@ entity MomentsTask   {
 
   /** 用户ID */
   userId Integer
-
-  createdDate Instant
-
 }
 /** 奖励类型 */
 enum RewardType {
   GIFT, COMMISSION
 }
-
 /** 审核状态 */
 enum ApprovalStatus {
   APPROVED, REJECT
 }
-
 /**
  * 工作.
  */
@@ -125,11 +122,7 @@ entity MomentsJob {
 
   /** 用户ID */
   userId Integer
-  
-  createdDate Instant
-
 }
-
 /**
  * The Entity entity.
  * @author A true hipster
@@ -143,17 +136,14 @@ entity UserInfo {
 
   /** 手机号 */
   phoneNumber String
+  userId Integer
 }
-
 /**
  * Many to one relationship.
  */
 relationship ManyToOne {
   MomentsJob{task(title)} to MomentsTask
 }
-/**
- * One to one relationship.
- */
-relationship OneToOne {
-  UserInfo{user(login)} to User
-}
+dto * with mapstruct
+service * with serviceClass
+paginate * with infinite-scroll
