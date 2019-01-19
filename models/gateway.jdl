@@ -9,6 +9,7 @@ application {
     authenticationType jwt,
     serviceDiscoveryType eureka,
     enableTranslation false,
+    enableSwaggerCodegen true
   }
   //entities * except Task, Job
 
