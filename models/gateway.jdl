@@ -9,8 +9,23 @@ application {
     authenticationType jwt,
     serviceDiscoveryType eureka,
     enableTranslation false,
-    enableSwaggerCodegen true
+    enableSwaggerCodegen true,
+    searchEngine elasticsearch
   }
-  //entities * except Task, Job
-
+  entities *
+}
+/**
+ * 用户信息.
+ * @author lsfoo
+ */
+entity UserInfo {
+  phoneNumber String
+  nickName String
+  avator String
+}
+/**
+ * One to one relationship.
+ */
+relationship OneToOne {
+  UserInfo{user(login)} to User
 }

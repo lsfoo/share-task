@@ -14,8 +14,10 @@ application {
     serviceDiscoveryType eureka,
     skipClient true,
     skipUserManagement true,
+    devDatabaseType h2Memory
+
   }
-  entities MomentsTask, MomentsJob
+  entities *
 }
 
 
